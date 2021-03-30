@@ -4,6 +4,7 @@
 
 import random
 import string
+import requests
 
 class Game:
 
@@ -18,4 +19,15 @@ class Game:
             if char not in copy:
                 return False
             copy.remove(char)
-        return True
+        return self.__check_API(word)
+
+    @staticmethod
+    def __check_API(word):
+        r = requests.get(f"https://wagon-dictionary.herokuapp.com/{word}")
+        # Response possible:
+        #   - Not exist: {"found":false,"word":"gikdfofgda","error":"word not found"}
+        #   - Exist: {"found":true,"word":"test","length":4}
+        if r.status_code != 200:
+            raise RuntimeError("Trouble with the verification API")
+        body = r.json()
+        return body.get("found")
