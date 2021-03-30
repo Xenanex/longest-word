@@ -7,8 +7,6 @@ name = "pypi"
 requests = "*"
 flask = "*"
 gunicorn = "*"
-flask-session = "*"
-jsonpickle = "*"
 
 [dev-packages]
 nose = "*"

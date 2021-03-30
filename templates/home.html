@@ -8,9 +8,6 @@
   </head>
   <body>
     <h1>Longest Word</h1>
-    <div>Logged as: {{user}}</div>
-    <div>Actual score : {{score}}</div>
-
     <div>
       {% for letter in grid %}
         <span class="letter">{{ letter }}</span>
@@ -21,23 +18,5 @@
       <input type="text" name="word" onkeyup="this.value = this.value.toUpperCase();">
       <button>Check!</button>
     </form>
-    <div id="results">
-      {% if word %}
-        Your word: <strong>{{ word }}</strong>.
-        {% if is_valid %}
-          <span class="valid">Congrats, it's valid!</span>
-        {% else %}
-          <span class="invalid">Sorry, it's invalid...</span>
-        {% endif %}
-        {% if is_used %}
-          <span class="warning">... But already used</span>
-        {% endif %}
-      {% endif %}
-    </div>
-      <form action="/logout" id="logout" method="post">
-        <button>Logout</button>
-      </form>
-    <div>
-    </div>
   </body>
 </html>
